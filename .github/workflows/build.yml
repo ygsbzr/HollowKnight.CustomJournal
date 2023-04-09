@@ -64,4 +64,4 @@ jobs:
           tag_name: v${{steps.details.outputs.version}}
           body: sha256:${{steps.details.outputs.shahash}}
           files: |
-            ./artifacts/target/CustomAudio.zip
+            ./artifacts/target/CustomJournal.zip
