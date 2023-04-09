@@ -48,7 +48,7 @@
 		<RemoveDir Directories="$(SolutionDir)/dist" />
 		<MakeDir Directories="$(SolutionDir)/dist/tmp" />
 
-		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(TargetDir)/WavLib.dll;$(SolutionDir)/LICENSE;$(SolutionDir)/README.md" DestinationFolder="$(SolutionDir)/dist/tmp" />
+		<Copy SourceFiles="$(TargetPath);$(TargetDir)$(TargetName).pdb;$(SolutionDir)/LICENSE;$(SolutionDir)/README.md" DestinationFolder="$(SolutionDir)/dist/tmp" />
 		<ZipDirectory SourceDirectory="$(SolutionDir)/dist/tmp" DestinationFile="$(SolutionDir)/dist/$(TargetName).zip" />
 		<RemoveDir Directories="$(SolutionDir)/dist/tmp" />
 		<GetFileHash Files="$(SolutionDir)/dist/$(TargetName).zip" Algorithm="SHA256">
@@ -56,6 +56,6 @@
 			<Output TaskParameter="Items" ItemName="FilesWithHashes" />
 		</GetFileHash>
 		<WriteLinesToFile File="$(SolutionDir)/dist/sha256.txt" Lines="@(FilesWithHashes->'%(FileHash)')" Overwrite="true" Encoding="UTF-8"/>
-		<WriteLinesToFile File="$(SolutionDir)/dist/Version.txt" Lines="$(Version)"/>
+		<WriteLinesToFile File="$(SolutionDir)/dist/Version.txt" Lines="$(Version)"/> 
 	</Target>
 </Project>
