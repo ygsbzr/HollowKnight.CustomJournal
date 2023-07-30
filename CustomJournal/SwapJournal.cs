@@ -65,13 +65,16 @@ namespace CustomJournal
         }
         public static IEnumerator SwapJour()
         {
+            chidrenlist.Clear();
             yield return new WaitForSeconds(1);
             GameObject jounallist = GameCameras.instance.gameObject.FindGameObjectInChildren("HudCamera").FindGameObjectInChildren("Inventory").FindGameObjectInChildren("Journal").FindGameObjectInChildren("Enemy List");
 
             if (jounallist != null)
             {
+#if DEBUG
                 Modding.Logger.Log("Start SWap");
                 Modding.Logger.Log($"{SkinManager.GetCurrentSkin().GetName()}");
+#endif
                 jounallist.FindAllChildren(chidrenlist);
                 foreach (GameObject go in chidrenlist)
                 {

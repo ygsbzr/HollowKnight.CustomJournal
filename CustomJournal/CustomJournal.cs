@@ -28,7 +28,7 @@ namespace CustomJournal
         }
         public override string GetVersion()
         {
-            return "1.0.0.0";
+            return "1.0.0.1";
         }
         public bool isCustomKnightInstalled()
         {
@@ -42,7 +42,14 @@ namespace CustomJournal
                 DumpManager.BeforeDumpingGameObject += DumpJ;
                 SwapManager.OnApplySkinUsingProxy += SwapJournalM;
                 On.HeroController.Start += InitJournal;
+                ModHooks.BeforeSavegameSaveHook += UnsetEnter;
             }
+        }
+
+        private void UnsetEnter(SaveGameData obj)
+        {
+            dumped = false;
+            swaped = false;
         }
 
 
